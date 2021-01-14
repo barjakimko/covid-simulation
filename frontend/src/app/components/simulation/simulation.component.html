@@ -1,0 +1,234 @@
+<!--<p>simulation List!</p>-->
+
+
+<!--<input type="text" #simulationId>-->
+<!--<button (click)="getSimulation(simulationId.value)">User id</button>-->
+
+
+<body>
+
+<nav>
+
+  <h3>Choose simulation</h3>
+
+  <ul *ngFor="let simulation of allSimulations" class="repo">
+    <div class="category">
+      <button (click)="getSimulation(simulation.id)">{{simulation.name}}</button>
+    </div>
+
+    <br>
+  </ul>
+
+</nav>
+
+<div class="main-view">
+
+</div>
+
+<div class="main-view">
+
+  <ngx-charts-line-chart
+    *ngIf="chosenSimulation"
+    [view]="view"
+    [scheme]="colorScheme"
+    [legend]="legend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxis]="xAxis"
+    [yAxis]="yAxis"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [timeline]="timeline"
+    [results]="multi"
+    (select)="onSelect($event)"
+    (activate)="onActivate($event)"
+    (deactivate)="onDeactivate($event)"
+  >
+  </ngx-charts-line-chart>
+
+
+  <table id="t01">
+    <tr>
+      <th>Died</th>
+      <th>Healthy</th>
+      <th>Infected</th>
+      <th>Recovered</th>
+    </tr>
+    <tr *ngFor="let population of allPopulations" class="repo">
+      <td>{{population.died}}</td>
+      <td>{{population.healthy}}</td>
+      <td>{{population.infected}}</td>
+      <td>{{population.recovered}}</td>
+    </tr>
+  </table>
+
+</div>
+
+
+<section>
+
+<!--  Population size-->
+<!--  <mat-slider-->
+<!--    thumbLabel-->
+<!--    [displayWith]="formatLabel"-->
+<!--    tickInterval="1000"-->
+<!--    min="1"-->
+<!--    max="10000000"-->
+<!--    [value]="simulationForm.get('populationSize')"-->
+<!--  ></mat-slider>-->
+
+<!--  Initial infected-->
+<!--  <mat-slider-->
+<!--    thumbLabel-->
+<!--    [displayWith]="formatLabel"-->
+<!--    tickInterval="100"-->
+<!--    min="1"-->
+<!--    max="10000"-->
+<!--    [value]="simulationForm.get('initialInfectedSize')"-->
+<!--  ></mat-slider>-->
+
+<!--  Contagiousness-->
+<!--  <mat-slider-->
+<!--    thumbLabel-->
+<!--    [displayWith]="formatLabel"-->
+<!--    tickInterval="1000"-->
+<!--    min="1"-->
+<!--    max="1000"-->
+<!--    [value]="simulationForm.get('Contagiousness')"-->
+<!--  ></mat-slider>-->
+
+<!--  Mortality-->
+<!--  <mat-slider-->
+<!--    thumbLabel-->
+<!--    [displayWith]="formatLabel"-->
+<!--    tickInterval="1000"-->
+<!--    min="1"-->
+<!--    max="1000"-->
+<!--    [value]="simulationForm.get('Mortality')"-->
+<!--  ></mat-slider>-->
+
+<!--  Cycle Time-->
+<!--  <mat-slider-->
+<!--    thumbLabel-->
+<!--    [displayWith]="formatLabel"-->
+<!--    tickInterval="1000"-->
+<!--    min="1"-->
+<!--    max="1000"-->
+<!--    [value]="simulationForm.get('Cycle Time')"-->
+<!--  ></mat-slider>-->
+
+<!--  Simulation Time-->
+<!--  <mat-slider-->
+<!--    thumbLabel-->
+<!--    [displayWith]="formatLabel"-->
+<!--    formControlName="populationSize"-->
+<!--    tickInterval="1000"-->
+<!--    min="1"-->
+<!--    max="1000"-->
+<!--    [value]="simulationForm.get('Simulation Time')"-->
+<!--  >-->
+<!--    -->
+<!--  </mat-slider>-->
+
+  <form [formGroup]="simulationForm">
+
+    <mat-slider
+      thumbLabel
+      [displayWith]="formatLabel"
+      formControlName="populationSize"
+      tickInterval="1000"
+      min="1"
+      max="10000000"
+    >
+    </mat-slider>
+
+    <mat-slider
+      thumbLabel
+      [displayWith]="formatLabel"
+      formControlName="initialInfectedSize"
+      tickInterval="100"
+      min="1"
+      max="10000"
+    >
+    </mat-slider>
+
+
+    <mat-slider
+      thumbLabel
+      [displayWith]="formatLabel"
+      formControlName="contagiousness"
+      step="0.1"
+      min="0"
+      max="5"
+    >
+    </mat-slider>
+
+    <mat-slider
+      thumbLabel
+      [displayWith]="formatLabel"
+      formControlName="mortality"
+      step="0.01"
+      min="0"
+      max="1"
+    >
+    </mat-slider>
+
+    <mat-slider
+      thumbLabel
+      [displayWith]="formatLabel"
+      formControlName="cycleTime"
+      tickInterval="1"
+      min="1"
+      max="365"
+    >
+    </mat-slider>
+
+    <mat-slider
+      thumbLabel
+      [displayWith]="formatLabel"
+      formControlName="simulationTime"
+      tickInterval="1"
+      min="1"
+      max="1000"
+    >
+    </mat-slider>
+
+    Population size:
+    <label>
+      <input type="text" formControlName="populationSize">
+    </label>
+
+    Infected people:
+    <label>
+      <input type="text" formControlName="initialInfectedSize">
+    </label>
+
+    Contagiousness:
+    <label>
+      <input type="text" formControlName="contagiousness">
+    </label>
+
+    Mortality:
+    <label>
+      <input type="text" formControlName="mortality">
+    </label>
+
+    CycleTime:
+    <label>
+      <input type="text" formControlName="cycleTime">
+    </label>
+
+    CimulationTime:
+    <label>
+      <input type="text" formControlName="simulationTime">
+    </label>
+
+
+    <label>
+      <input type="submit" placeholder="Submit update simulation">
+    </label>
+  </form>
+
+</section>
+
+</body>
