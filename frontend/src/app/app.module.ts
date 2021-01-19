@@ -12,12 +12,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // import {DemoMaterialModule} from './app/material-module';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSliderModule} from '@angular/material/slider';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SimulationComponent,
+    PieChartComponent,
   ],
   imports: [
     MatSliderModule,

@@ -20,40 +20,4 @@ public class DemoApplication {
     public DemoApplication(SimulationRepository simulationRepository) {
         this.simulationRepository = simulationRepository;
     }
-
-    @Bean
-    public CommandLineRunner runner() {
-        return (args) -> {
-
-            Simulation covid_start = new Simulation(
-                    "start covid-19",
-                    1_000_000,
-                    100,
-                    3.0,
-                    0.03,
-                    14,
-                    3000
-            );
-
-            Simulation covid_now = new Simulation(
-                    "now covid-19",
-                    1_000_000,
-                    100,
-                    1.3,
-                    0.03,
-                    14,
-                    3000
-            );
-
-            covid_start.addFirstPopulation();
-            covid_now.addFirstPopulation();
-
-            covid_start.makeSimulation();
-            covid_now.makeSimulation();
-
-            simulationRepository.save(covid_start);
-            simulationRepository.save(covid_now);
-
-        };
-    }
 }

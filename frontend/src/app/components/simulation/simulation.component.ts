@@ -13,6 +13,8 @@ import {testData} from '../../data';
 export class SimulationComponent implements OnInit {
 
   chosenSimulation: Simulation;
+  dataForChartPie: Series[] = [];
+
   allSimulations: Simulation[];
   allPopulations: Population[];
 
@@ -32,12 +34,11 @@ export class SimulationComponent implements OnInit {
   });
 
   constructor(private simulationService: SimulationService) {
-
   }
 
   title = 'frontend';
 
-  multi = testData;
+  multi = [];
   view: any[] = [700, 300];
 
   // options
@@ -71,7 +72,6 @@ export class SimulationComponent implements OnInit {
         }
       );
     this.setSimulationFormF(this.chosenSimulation);
-    // this.simulationFormComponent.setSimulationFormF(this.chosenSimulation);
   }
 
   getSimulations(): void {
@@ -169,6 +169,16 @@ export class SimulationComponent implements OnInit {
         simulationTime: simulation.simulationTime,
       }
     );
+  }
+
+
+  getPopulationsToCharPie(population: Population): void {
+    this.dataForChartPie = [];
+    this.dataForChartPie.push(
+      new Series('infected', population.infected),
+      new Series('healthy', population.healthy),
+      new Series('died', population.died),
+      new Series('recovered', population.recovered));
   }
 }
 

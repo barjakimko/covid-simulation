@@ -1,17 +1,37 @@
-export const testData = [
+export const single = [
+  {
+    name: 'Germany',
+    value: 8940000
+  },
+  {
+    name: 'USA',
+    value: 5000000
+  },
+  {
+    name: 'France',
+    value: 7200000
+  },
+  {
+    name: 'UK',
+    value: 6200000
+  }
+];
+
+
+export let testData = [
   {
     name: 'Germany',
     series: [
       {
-        name: '1990',
+        name: 1990,
         value: 62000000
       },
       {
-        name: '2010',
+        name: 2010,
         value: 73000000
       },
       {
-        name: '2011',
+        name: 2011,
         value: 89400000
       }
     ]
@@ -21,15 +41,15 @@ export const testData = [
     name: 'USA',
     series: [
       {
-        name: '1990',
+        name: 1990,
         value: 250000000
       },
       {
-        name: '2010',
+        name: 2010,
         value: 309000000
       },
       {
-        name: '2011',
+        name: 2011,
         value: 311000000
       }
     ]
@@ -39,15 +59,15 @@ export const testData = [
     name: 'France',
     series: [
       {
-        name: '1990',
+        name: 1990,
         value: 58000000
       },
       {
-        name: '2010',
+        name: 2010,
         value: 50000020
       },
       {
-        name: '2011',
+        name: 2011,
         value: 58000000
       }
     ]
@@ -56,11 +76,11 @@ export const testData = [
     name: 'UK',
     series: [
       {
-        name: '1990',
+        name: 1990,
         value: 57000000
       },
       {
-        name: '2010',
+        name: 2010,
         value: 62000000
       }
     ]
